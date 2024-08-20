@@ -16,6 +16,7 @@ public class RequestDataController {
     @GetMapping("/request-param")
     // http://localhost:4000/request-data/request-param?name=홍길동&age=30
     public String requestParam(
+        // @RequestParam(name="name") String name,
         @RequestParam() String name,
         @RequestParam(name="age", required=false) Integer age
     ) {
