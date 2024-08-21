@@ -36,7 +36,7 @@ public class BasicController {
         return "첫번째 REST API 요청 응답입니다.";
     }
 
-    // HTTP GET method : 클라이언트가 서버로부터 데이터를 받기위한 메서드
+    // HTTP GET method : 클라이언트가 서버로부터 데이터를 받기 위한 메서드
     // Request Body가 존재하지 않음
     @GetMapping("")
     public String getMethod() {
