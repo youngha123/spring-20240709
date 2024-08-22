@@ -60,7 +60,7 @@ public class RequestDataContoller {
 
     @GetMapping("/path-variable/another/{var}")
     public String anotherPathVariable2 (
-        @PathVariable("var") String var
+        @PathVariable("var") String var 
     ) {
         return "another2";
     }
