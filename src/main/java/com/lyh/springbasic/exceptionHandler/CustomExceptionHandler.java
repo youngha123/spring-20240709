@@ -19,9 +19,9 @@ public class CustomExceptionHandler {
     ) {
         exception.printStackTrace();
         return 
-        ResponseEntity
-        .status(HttpStatus.FORBIDDEN)
-        .body("잘못된 입력입니다.");
+            ResponseEntity
+            .status(HttpStatus.FORBIDDEN)
+            .body("잘못된 입력입니다.");
     }
 
     @ExceptionHandler(value={HttpMessageNotReadableException.class})

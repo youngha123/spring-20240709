@@ -59,7 +59,6 @@ public class RequestDataContoller {
         return "other 메서드 호출";
     }
 
-    // "/path-variable/another/another"
     @GetMapping("/path-variable/{var}/another")
     public String anotherPathVariable1 (
         @PathVariable("var") String var
@@ -74,14 +73,14 @@ public class RequestDataContoller {
         return "another2";
     }
 
-    // @RequestBody() ;
+    // @RequestBody() :
     // - POST, PUT, PATCH처럼 Request Body로 데이터를 전송하는 메서드에서 데이터를 읽기 위한 방법
-    @PostMapping("/request-body") 
+    @PostMapping("/request-body")
     public String requestBody(
         // @RequestBody String requestBody
         @RequestBody SampleDto requestBody
     ) {
-        
+
         return "Request Body data : " + requestBody.getName() + ", " + requestBody.getAge();
     }
 
@@ -94,16 +93,14 @@ public class RequestDataContoller {
 
 }
 
-// DTO: (Data Transfer Object)
+// DTO (Data Transfer Object) :
 // - 데이터를 서로 다른 계층간에 전송하기 위한 객체
-// - 캡슐화가 되어있음, 비즈니스 로직은 포함하지 않고 private 필드와 생성자, gette, setter만 존재
+// - 캡슐화가 되어있음, 비즈니스 로직은 포함하지 않고 private 필드와 생성자, getter, setter만 존재
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 class SampleDto {
-    
     private String name;
     private int age;
-
 }

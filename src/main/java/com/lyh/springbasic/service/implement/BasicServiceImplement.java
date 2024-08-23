@@ -3,7 +3,6 @@ package com.lyh.springbasic.service.implement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.lyh.springbasic.service.BasicService;
 
@@ -14,7 +13,7 @@ import com.lyh.springbasic.service.BasicService;
 
 // @Service : 해당 클래스를 Spring Bean으로 등록하는 어노테이션, @Component와 동일하지만 각동성 향상을 위해 Service 이름을 사용
 // @Component
-@Service
+// @Service
 public class BasicServiceImplement implements BasicService {
 
     @Override

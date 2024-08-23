@@ -3,7 +3,6 @@ package com.lyh.springbasic.dto;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
-// import jakarta.validation.OverridesAttribute.List;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -25,20 +24,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Validation {
-
+    
     // @NotNull: null을 허용하지 않음
     @NotNull
     private String notNull;
 
-    // @NotEmpty: 문자열 타입에서 null과 빈 문자열("")을 허용하지 않음
+    // @NotEmpty: 문자열 타입에서 null과 빈문자열("")을 허용하지 않음
     @NotEmpty
     private String notEmpty;
 
-    // @NotBlank: 문자열 타입에서 null, 빈 문자열(""), 공백문자열("  ")을 허용하지 않음
-    @NotBlank 
-    public String notBlank;
+    // @NotBlank: 문자열 타입에서 null, 빈문자열(""), 공백문자열("  ")을 허용하지 않음
+    @NotBlank
+    private String notBlank;
 
-    // client로부터 데이터를 받을때는 기본형 데이터타입을 쓰지않는게 좋음 
+    // client로부터 데이터를 받을 때는 기본형 데이터타입을 쓰지 않는게 좋음
     @NotNull
     // @NotBlank -> 쓰면 안됨 문자열만 검사할 수 있음
     private Integer number;
@@ -48,7 +47,7 @@ public class Validation {
     @Length(min=4)
     @NotNull
     private String length;
-    
+
     // @Min(), @Max(): 정수의 최소 최대 값을 지정
     @Min(10)
     @Max(20)
@@ -58,7 +57,7 @@ public class Validation {
     @Range(min=5, max=25)
     private Integer range;
 
-    // @Size(min=?, max=?): 컬렉션의 길이 최소 최대값을 지정
+    // @Size(min=?, max): 컬렉션의 길이 최소 최대값을 지정
     @Size(min=2, max=4)
     private Integer[] size;
 
