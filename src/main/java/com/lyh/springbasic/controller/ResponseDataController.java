@@ -2,6 +2,8 @@ package com.lyh.springbasic.controller;
 
 import java.util.*;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +32,12 @@ public class ResponseDataController {
     // - 반환타입으로 ResponseEntity 타입으로 지정
     //   ResponseEntity 클래스는 제너릭으로 response body 데이터의 타입을 전달해야함
     @GetMapping("/response-entity/{name}")
-    public void responseEntity(
+    public ResponseEntity<ResponseDto> responseEntity(
         @PathVariable("name") String name
     ) {
-
+        ResponseDto response = new ResponseDto(name, new Date());
+        // return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
     
 
