@@ -1,6 +1,7 @@
 package com.lyh.springbasic.service.implement;
 
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,7 @@ public class SampleServiceImplement implements SampleService {
 
         // 2. repository를 이용하여 Entity에 해당하는 레코드 삭제
         //    - 해당하는 레코드가 존재하지 않을때 수행 불가능
+
         SampleTable1Entity entity = sampleTable1Repository.findById(sampleId).get();
         sampleTable1Repository.delete(entity);
 
@@ -70,8 +72,8 @@ public class SampleServiceImplement implements SampleService {
     @Override
     public ResponseEntity<String> queryString() {
 
-        List<SampleUserEntity> sampleUserEntities = sampleUserRepository.getNativeSql("홍길동", "부산광역시"); 
-
+        List<SampleUserEntity> sampleUserEntities = sampleUserRepository.getNativeSql("홍길동", "부산광역시");
+        
         return ResponseEntity.status(HttpStatus.OK).body(sampleUserEntities.toString());
     }
 
@@ -80,5 +82,10 @@ public class SampleServiceImplement implements SampleService {
         String jwt = jwtProvider.create(name);
         return jwt;
     }
-    
+
+    @Override
+    public String validateJwt(String jwt) {
+        String subject = jwtProvider.validate(jwt);
+        return subject;
+    }
 }
