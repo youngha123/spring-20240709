@@ -19,7 +19,7 @@ import lombok.ToString;
 public class SampleUserEntity {
     
     @Id
-    private String user_id;
+    private String userId;
     private String password;
     private String name;
     private String address;

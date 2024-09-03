@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -28,7 +29,7 @@ import lombok.RequiredArgsConstructor;
 // filter 
 // - 서버로직과 서블릿 사이에서 http request에 대한 사전 검사 작업을 수행하는 영역
 // - filter에서 걸러진 request는 서블릿까지 도달하지 못하고 reject 됨
-
+@Component
 @RequiredArgsConstructor
 // OncePerRequestFilter 라는 추상클래스를 확장 구현하여 filter 클래스로 생성
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -57,11 +58,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
 
             // 3. 데이터베이스에 존재하는 유저인지 확인
-            SampleUserEntity userEntity = sampleUserRepository.findByUserId(subject);
-            if (userEntity == null) {
-                filterChain.doFilter(request, response);
-                return;
-            }
+            // SampleUserEntity userEntity = sampleUserRepository.findByUserId(subject);
+            // if (userEntity == null) {
+            //     filterChain.doFilter(request, response);
+            //     return;
+            // }
 
             // 4. 접근 주체의 권한 지정
             List<GrantedAuthority> roles = AuthorityUtils.NO_AUTHORITIES;
@@ -75,7 +76,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             // 5.1 인증된 사용자 객체를 생성
             // UsernamePasswordAuthenticationToken(사용자 정보, 비밀번호, 권한);
             AbstractAuthenticationToken authenticationToken
-                = new UsernamePasswordAuthenticationToken(userEntity, null, roles);
+                = new UsernamePasswordAuthenticationToken(subject, null, roles);
 
             // 5.2 인증 정보를 상세 리퀘스트를 등록
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
