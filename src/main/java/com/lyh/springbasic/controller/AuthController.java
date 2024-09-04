@@ -8,17 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lyh.springbasic.dto.PostUserRequestDto;
+import com.lyh.springbasic.dto.SignInRequestDto;
+import com.lyh.springbasic.service.AuthService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
+
+    private final AuthService authService;
     
     @GetMapping("")
     public String getAuth(
-
-        // @AuthenticationPrincipal
+        // @AuthenticationPrincipal:
         // 인증 필터에서 security context에 등록된 해당 request의 접근 주체의 정보를 가져오는 어노테이션
         // 인증이 성공적으로 완료된 접근 주체일 경우 authentication token의 principal 값을 가져옴
         // 인증에 실패한 접근 주체일 경우 anonymousUser를 반환함, 단 해당 url 패턴이 permitAll 일때만 가져옴
@@ -27,11 +32,20 @@ public class AuthController {
         return principal;
     }
 
-    @PostMapping("/sing-up")
+    @PostMapping("/sign-up")
     public String signUp(
         @RequestBody @Valid PostUserRequestDto requestBody
     ) {
-        return null;
+        String response = authService.signUp(requestBody);
+        return response;
+    }
+
+    @PostMapping("/sign-in")
+    public String signIn(
+        @RequestBody @Valid SignInRequestDto requestBody
+    ) {
+        String response = authService.signIn(requestBody);
+        return response;
     }
 
 }
