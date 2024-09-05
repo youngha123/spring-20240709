@@ -12,8 +12,8 @@ public class SpringbasicApplication {
 		SpringApplication.run(SpringbasicApplication.class, args);
 	}
 
-	void  lombokExample() {
-		
+	void lombokExample() {
+
 		Lombok lombok = new Lombok("a", "b", "c", false, false);
 		lombok.getField1();
 		lombok.setField3(null);
@@ -21,10 +21,9 @@ public class SpringbasicApplication {
 		// lombok = new Lombok();
 		lombok = new Lombok("d", "e");
 
-		// 기본형 boolean일 경우 getter 메서드 이름은 isXXX()
 		lombok.isField4();
-		// 참조형 Boolean일 경우 getter 메소드 이름은 getXXX()
 		lombok.getField5();
+
 	}
 
 }

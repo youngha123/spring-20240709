@@ -14,11 +14,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostSample1RequestDto {
-    
+
     @NotBlank
     @Length(max=10)
     private String sampleId;
 
     @NotNull
     private Integer sampleColumn;
+
 }

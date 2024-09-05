@@ -31,7 +31,7 @@ public class SampleUserEntity {
 
     public SampleUserEntity(PostUserRequestDto dto) {
         this.userId = dto.getUserId();
-        this.password = dto.getPassowrd();
+        this.password = dto.getPassword();
         this.name = dto.getName();
         this.address = dto.getAddress();
         this.telNumber = dto.getTelNumber();

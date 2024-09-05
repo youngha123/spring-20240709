@@ -59,9 +59,9 @@ public class AuthServiceImplement implements AuthService {
             //         .build();
 
             // 비밀번호 암호화
-            String password = dto.getPassowrd();
+            String password = dto.getPassword();
             String encodedPassword = passwordEncoder.encode(password);
-            dto.setPassowrd(encodedPassword);
+            dto.setPassword(encodedPassword);
 
             SampleUserEntity userEntity = new SampleUserEntity(dto);
             sampleUserRepository.save(userEntity);
