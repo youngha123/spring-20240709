@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lyh.springbasic.service.object.CustomOAuth2User;
 
 @Service
 // OAuth2를 통해서 클라이언트 정보를 받은 후 진행할 비즈니스로직을 작성하는 서비스
@@ -30,7 +31,9 @@ public class OAuth2UserServiceImplement extends DefaultOAuth2UserService {
             exception.printStackTrace();
         }
 
-        return oAuth2User;
+        // 데이터베이스 작업이 들어감
+
+        return new CustomOAuth2User(oAuth2User.getName(), oAuth2User.getAttributes());
 
     }
 
