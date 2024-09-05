@@ -1,14 +1,14 @@
 package com.lyh.springbasic.service.object;
 
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-// OAuth2 인증 성공 시 인증 서버로부터 클라이언트의 정보를 받아서 저장할 객체
+// OAuth2 인증 성공시 인증 서버로부터 클라이언트의 정보를 받아서 저장할 객체
 // - 반드시 OAuth2User 인터페이스를 구현해야함
 public class CustomOAuth2User implements OAuth2User {
 
