@@ -42,7 +42,7 @@ import lombok.RequiredArgsConstructor;
 public class WebSecurityConfig {
 
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
-    private final OAuth2UserServiceImplement oAuth2UserService;
+    private final OAuth2UserServiceImplement oAuth2UserSerivce;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     
     @Bean
@@ -100,9 +100,9 @@ public class WebSecurityConfig {
 
             // OAuth2 인증 처리
             .oauth2Login(oauth2 -> oauth2
-                .authorizationEndpoint(endPoint -> endPoint.baseUri("/auth"))
+                .authorizationEndpoint(endPoint -> endPoint.baseUri("/auth/sns"))
                 .redirectionEndpoint(endPoint -> endPoint.baseUri("/oauth2/callback/*"))
-                .userInfoEndpoint(endPoint -> endPoint.userService(oAuth2UserService))
+                .userInfoEndpoint(endPoint -> endPoint.userService(oAuth2UserSerivce))
                 .successHandler(oAuth2SuccessHandler)
             )
             
